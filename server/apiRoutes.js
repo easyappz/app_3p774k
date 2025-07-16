@@ -1,8 +1,7 @@
 const express = require('express');
+const math = require('mathjs');
 
-/**
- * Пример создания модели в базу данных
- */
+// Existing comments and schema example remain unchanged
 // const mongoose = require('mongoose');
 // const db = require('/db');
 
@@ -33,5 +32,20 @@ router.get('/status', (req, res) => {
   });
 });
 
-module.exports = router;
+// POST /api/calculate
+router.post('/calculate', (req, res) => {
+  const { expression } = req.body;
 
+  if (!expression || typeof expression !== 'string') {
+    return res.status(400).json({ error: 'Invalid expression provided' });
+  }
+
+  try {
+    const result = math.evaluate(expression);
+    res.json({ result });
+  } catch (error) {
+    res.status(400).json({ error: 'Error evaluating expression: ' + error.message });
+  }
+});
+
+module.exports = router;
