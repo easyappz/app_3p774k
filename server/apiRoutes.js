@@ -1,22 +1,6 @@
 const express = require('express');
 const math = require('mathjs');
 
-// Existing comments and schema example remain unchanged
-// const mongoose = require('mongoose');
-// const db = require('/db');
-
-// const MongoTestSchema = new mongoose.Schema({
-//   value: { type: String, required: true },
-// });
-
-// const MongoModelTest = db.mongoDb.model('Test', MongoTestSchema);
-
-// const newTest = new MongoModelTest({
-//   value: 'test-value',
-// });
-
-// newTest.save();
-
 const router = express.Router();
 
 // GET /api/hello
